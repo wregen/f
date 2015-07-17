@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492.08 168.58" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <defs id="defs6216">
+  <filter id="filter6260" style="color-interpolation-filters:sRGB;">
+   <feFlood id="feFlood6262" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.5"/>
+   <feComposite id="feComposite6264" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+   <feGaussianBlur id="feGaussianBlur6266" result="blur" stdDeviation="1" in="composite"/>
+   <feOffset id="feOffset6268" result="offset" dx="1" dy="1"/>
+   <feComposite id="feComposite6270" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <metadata id="metadata7">
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g id="f" stroke-linejoin="round" transform="matrix(2.4845941,0,0,2.4845941,-476.04207,-1637.1458)" stroke="#666" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="6" fill="none">
+  <path id="f1" d="m195,414.09,0-45c0-15,15-15,15-15" transform="translate(0,308.2677)"/>
+  <path id="f2" d="m195,384.09,15,0,0,0" transform="translate(0,308.2677)"/>
+ </g>
+ <path id="o1" stroke-linejoin="round" d="m82.988,83.097c-37.269,0-37.269,74.537,0,74.537s37.269-74.537,0-74.537z" stroke="#666" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.90756416" fill="none"/>
+ <path id="o2" stroke-linejoin="round" d="m157.69,84.189c-37.269,0-37.269,74.537,0,74.537s37.269-74.537,0-74.537z" stroke="#666" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.90756416" fill="none"/>
+ <path id="a" stroke-linejoin="round" d="M197.28,157.63,259.39,8.5508,298.19,160.13l-76.064-14.922" filter="url(#filter6260)" stroke="#b50000" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.90756416000000000" fill="none"/>
+ <g id="b" stroke-linejoin="round" transform="matrix(2.4845941,0,0,2.4845941,-481.01128,-1637.1458)" stroke="#111" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="6" fill="none">
+  <path id="b1" d="m331.5,692.93c-15,0-15,30,0,30s15-30,0-30z"/>
+  <path id="b2" d="m320.24,707.42,0-45,0,0"/>
+ </g>
+ <path id="l" stroke-linejoin="round" d="m391.05,8.4548,0,111.81c0,39.247,27.391,37.956,27.391,37.956" stroke="#111" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.90756416" fill="none"/>
+ <g id="e" stroke-linejoin="round" transform="matrix(1.8825381,0,0,1.8825381,-365.44393,-1307.5694)" stroke="#111" stroke-linecap="round" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="7.91886473" fill="none">
+  <path id="e1" d="m451,752.56c-11.64,6.2217-11.64,6.2217-11.64,6.2217"/>
+  <path id="e2" d="m437.83,778.77c-19.797,0-19.797-39.594,0-39.594,13.198,0,13.198,13.198,13.198,13.198"/>
+ </g>
+</svg>
