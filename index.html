@@ -6,6 +6,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+  var Router={routes:[],mode:null,root:"/",config:function(t){return this.mode=t&&t.mode&&"history"==t.mode&&history.pushState?"history":"hash",this.root=t&&t.root?"/"+this.clearSlashes(t.root)+"/":"/",this},getFragment:function(){var t="";if("history"===this.mode)t=this.clearSlashes(decodeURI(location.pathname+location.search)),t=t.replace(/\?(.*)$/,""),t="/"!=this.root?t.replace(this.root,""):t;else{var e=window.location.href.match(/#(.*)$/);t=e?e[1]:""}return this.clearSlashes(t)},clearSlashes:function(t){return t.toString().replace(/\/$/,"").replace(/^\//,"")},add:function(t,e){return"function"==typeof t&&(e=t,t=""),this.routes.push({re:t,handler:e}),this},remove:function(t){for(var e,r=0;r<this.routes.length,e=this.routes[r];r++)if(e.handler===t||e.re.toString()===t.toString())return this.routes.splice(r,1),this;return this},flush:function(){return this.routes=[],this.mode=null,this.root="/",this},check:function(t){for(var e=t||this.getFragment(),r=0;r<this.routes.length;r++){var o=e.match(this.routes[r].re);if(o)return o.shift(),this.routes[r].handler.apply({},o),this}return this},listen:function(){var t=this,e=t.getFragment(),r=function(){e!==t.getFragment()&&(e=t.getFragment(),t.check(e))};return clearInterval(this.interval),this.interval=setInterval(r,50),this},navigate:function(t){return t=t?t:"","history"===this.mode?history.pushState(null,null,this.root+this.clearSlashes(t)):(window.location.href.match(/#(.*)$/),window.location.href=window.location.href.replace(/#(.*)$/,"")+"#"+t),this}};
+  </script>
   <style>
     html {
       height: 100%;
@@ -47,49 +51,57 @@
       text-align: right;
       font-size: 20px;
     }
+    #links {
+      background: #000;
+      padding: 10px;
+      height:55px;
+    }
+    a {
+      padding:5px 0 5px 10px;
+      margin: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 20px;
+      display: inline-block;
+      border: 2px solid #fafafa;
+      color: #fff;
+      font-weight:bold;
+      font-size:15px;
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
   <div id="m">
+    <div id="links">
+      <a href="#/1">1</a>
+      <a href="#/2">2</a>
+      <a href="#/3">3</a>
+    </div>
     <div id="c">
-      <svg id="svg2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492.08 168.58" version="1.1">
-        <g id="layer1" transform="translate(-272.15249,-623.14322)">
-          <g id="g3998" transform="matrix(1.8825381,0,0,1.8825381,-97.967371,-685.29388)">
-            <g id="g4013" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="none" stroke-miterlimit="4" fill="none">
-              <g id="f" transform="matrix(1.3198108,0,0,1.3198108,-56.26564,-174.60933)" stroke="#666" stroke-width="6">
-                <path id="f1" d="m195,414.09,0-45c0-15,15-15,15-15" transform="translate(0,308.2677)" />
-                <path id="f2" d="m195,384.09,15,0,0,0" transform="translate(0,308.2677)" />
-              </g>
-              <path id="o1" d="m240.69,739.18c-19.797,0-19.797,39.594,0,39.594s19.797-39.594,0-39.594z" stroke="#666" stroke-width="7.91886473" />
-              <path id="o2" d="m280.37,739.76c-19.797,0-19.797,39.594,0,39.594s19.797-39.594,0-39.594z" stroke="#666" stroke-width="7.91886473" />
-              <path class="draggable" id="a" d="m301.4,778.77,32.995-79.189,20.608,80.516-40.405-7.9263,0,0" stroke="#111111" stroke-width="7.91886473" style="cursor:pointer" />
-              <g id="b" transform="matrix(1.3198108,0,0,1.3198108,-58.90527,-174.60933)" stroke="#111111" stroke-width="6">
-                <path id="b1" d="m331.5,692.93c-15,0-15,30,0,30s15-30,0-30z" />
-                <path id="b2" d="m320.24,707.42,0-45,0,0" />
-              </g>
-              <path id="l" d="m404.33,699.53,0,59.391c0,20.848,14.55,20.162,14.55,20.162" stroke="#111111" stroke-width="7.91886473" />
-              <g id="e" transform="translate(2.483844,0.46089652)" stroke="#111111" stroke-width="7.91886473">
-                <path id="e1" d="m451,752.56c-11.64,6.2217-11.64,6.2217-11.64,6.2217" />
-                <path id="e2" d="m437.83,778.77c-19.797,0-19.797-39.594,0-39.594,13.198,0,13.198,13.198,13.198,13.198" />
-              </g>
-            </g>
-          </g>
-        </g>
-      </svg>
+      <div id="res"></div>
       <div id="w"> coming soon </div>
     </div>
   </div>
 
-  <script>
-    var a = document.getElementById('a')
-    a.addEventListener("mouseover", function (e) {
-      e.target.setAttribute("stroke", "#911111");
-    });
-    a.addEventListener("mouseout", function (e) {
-      e.target.setAttribute("stroke", "#111111");
-    });
-  </script>
+<script>
+  Router.navigate();
+  Router
+    .add(/1/, function () {
+      $('#res').load("./img/1.svg");
+    })
+    .add(/2/, function () {
+      $('#res').load("./img/2.svg");
+    })
+    .add(/3/, function () {
+      $('#res').load("./img/3.svg");
+    })
+    .listen();
+
+  // forwarding
+  Router.navigate('/1');
+</script>
 </body>
 
 </html>
