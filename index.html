@@ -103,6 +103,9 @@
             })
             .when('/3', {
               templateUrl: './img/3.svg'
+            })
+            .otherwise({
+              redirectTo: '/1'
             });
         });
 
