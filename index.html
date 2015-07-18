@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" data-ng-app="app">
 
 <head>
   <title>fooAble</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script>
-  var Router={routes:[],mode:null,root:"/",config:function(t){return this.mode=t&&t.mode&&"history"==t.mode&&history.pushState?"history":"hash",this.root=t&&t.root?"/"+this.clearSlashes(t.root)+"/":"/",this},getFragment:function(){var t="";if("history"===this.mode)t=this.clearSlashes(decodeURI(location.pathname+location.search)),t=t.replace(/\?(.*)$/,""),t="/"!=this.root?t.replace(this.root,""):t;else{var e=window.location.href.match(/#(.*)$/);t=e?e[1]:""}return this.clearSlashes(t)},clearSlashes:function(t){return t.toString().replace(/\/$/,"").replace(/^\//,"")},add:function(t,e){return"function"==typeof t&&(e=t,t=""),this.routes.push({re:t,handler:e}),this},remove:function(t){for(var e,r=0;r<this.routes.length,e=this.routes[r];r++)if(e.handler===t||e.re.toString()===t.toString())return this.routes.splice(r,1),this;return this},flush:function(){return this.routes=[],this.mode=null,this.root="/",this},check:function(t){for(var e=t||this.getFragment(),r=0;r<this.routes.length;r++){var o=e.match(this.routes[r].re);if(o)return o.shift(),this.routes[r].handler.apply({},o),this}return this},listen:function(){var t=this,e=t.getFragment(),r=function(){e!==t.getFragment()&&(e=t.getFragment(),t.check(e))};return clearInterval(this.interval),this.interval=setInterval(r,50),this},navigate:function(t){return t=t?t:"","history"===this.mode?history.pushState(null,null,this.root+this.clearSlashes(t)):(window.location.href.match(/#(.*)$/),window.location.href=window.location.href.replace(/#(.*)$/,"")+"#"+t),this}};
-  </script>
   <style>
     html {
       height: 100%;
@@ -51,13 +47,15 @@
       text-align: right;
       font-size: 20px;
     }
+    
     #links {
       background: #000;
       padding: 10px;
-      height:55px;
+      height: 55px;
     }
+    
     a {
-      padding:5px 0 5px 10px;
+      padding: 5px 0 5px 10px;
       margin: 10px;
       width: 20px;
       height: 20px;
@@ -65,8 +63,8 @@
       display: inline-block;
       border: 2px solid #fafafa;
       color: #fff;
-      font-weight:bold;
-      font-size:15px;
+      font-weight: bold;
+      font-size: 15px;
       text-decoration: none;
     }
   </style>
@@ -80,28 +78,36 @@
       <a href="#/3">3</a>
     </div>
     <div id="c">
-      <div id="res"></div>
+      <div ng-view></div>
       <div id="w"> coming soon </div>
     </div>
   </div>
 
-<script>
-  Router.navigate();
-  Router
-    .add(/1/, function () {
-      $('#res').load("./img/1.svg");
-    })
-    .add(/2/, function () {
-      $('#res').load("./img/2.svg");
-    })
-    .add(/3/, function () {
-      $('#res').load("./img/3.svg");
-    })
-    .listen();
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
 
-  // forwarding
-  Router.navigate('/1');
-</script>
+
+  <script>
+    (function (angular) {
+      'use strict';
+
+      angular
+        .module('app', ['ngRoute'])
+        .config(function ($routeProvider) {
+          $routeProvider
+            .when('/1', {
+              templateUrl: './img/1.svg'
+            })
+            .when('/2', {
+              templateUrl: './img/2.svg'
+            })
+            .when('/3', {
+              templateUrl: './img/3.svg'
+            });
+        });
+
+    })(this.angular);
+  </script>
 </body>
 
 </html>
